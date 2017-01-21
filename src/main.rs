@@ -16,9 +16,9 @@ fn test1() {
         ASTNode::Node(AST::List(
             &ASTNode::Vec(vec![
                 ASTNode::Node( AST::Verb( 
-                                 &ASTNode::Node(AST::Number(1)),
-                                 &ASTNode::Node(AST::Number(1)) )),
-                ASTNode::Node(AST::Number(1))
+                                 &ASTNode::Node(AST::Value(Value::Number(1))),
+                                 &ASTNode::Node(AST::Value(Value::Number(1))) )),
+                ASTNode::Node(AST::Value(Value::Number(1)))
                 ]))
         ));
 }

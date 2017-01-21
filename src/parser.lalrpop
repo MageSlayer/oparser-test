@@ -2,7 +2,7 @@ use ast::*;
 
 grammar<'ast>(arena: &'ast Arena<'ast>);
 
-Number: ASTNode<'ast> = { "1" => ASTNode::Node(AST::Number(1)) };
+Number: ASTNode<'ast> = { "1" => ASTNode::Node(AST::Value(Value::Number(1))) };
 Verb:   ASTNode<'ast> = { <a:Number> "+" <b:Number> => ASTNode::Node(AST::Verb( arena.alloc(a), arena.alloc(b) ) ) };
 
 Expr: ASTNode<'ast> = { Number, Verb };

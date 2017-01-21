@@ -1,9 +1,15 @@
 
 #[derive(Debug, PartialEq, Eq)]
-pub enum AST<'a> {
+pub enum Value {
     Number(i32),
+    VecInt(Vec<i32>)
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum AST<'a> {
+    Value(Value),
     Verb(&'a ASTNode<'a>, &'a ASTNode<'a>),
-    List(&'a ASTNode<'a>)
+    List(&'a ASTNode<'a>),
 }
 
 #[derive(Debug, PartialEq, Eq)]
