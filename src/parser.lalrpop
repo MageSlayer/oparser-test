@@ -1,0 +1,19 @@
+use ast::*;
+
+grammar<'ast>(arena: &'ast Arena<'ast>);
+
+Number: ASTNode<'ast> = { "1" => ASTNode::Node(AST::Number(1)) };
+Verb:   ASTNode<'ast> = { <a:Number> "+" <b:Number> => ASTNode::Node(AST::Verb( arena.alloc(a), arena.alloc(b) ) ) };
+
+Expr: ASTNode<'ast> = { Number, Verb };
+
+ExprList<T>: Vec<T> = {
+    <h:(<T> ";")*> <t:T?> =>
+        h.into_iter().chain(t).collect()
+};
+
+List:ASTNode<'ast> =  { "(" <ExprList<Expr>> ")" => ASTNode::Node( AST::List( arena.alloc( ASTNode::Vec(<>) ) ) ) };
+
+pub Expression: ASTNode<'ast> = {
+  <List>
+};
