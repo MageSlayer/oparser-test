@@ -15,5 +15,5 @@ ExprList<T>: Vec<T> = {
 List:ASTNode<'ast> =  { "(" <ExprList<Expr>> ")" => ASTNode::Node( AST::List( arena.alloc( ASTNode::Vec(<>) ) ) ) };
 
 pub Expression: ASTNode<'ast> = {
-  <List>
+  <Expr>
 };
