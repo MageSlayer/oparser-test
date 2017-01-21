@@ -1,18 +1,18 @@
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub enum Value {
     Number(i32),
     VecInt(Vec<i32>)
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub enum AST<'a> {
     Value(Value),
     Verb(&'a ASTNode<'a>, &'a ASTNode<'a>),
     List(&'a ASTNode<'a>),
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub enum ASTNode<'a> {
     Nil,
     Node(AST<'a>),
